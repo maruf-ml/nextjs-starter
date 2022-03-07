@@ -4,6 +4,7 @@ import { GetServerSideProps, NextPage } from 'next';
 
 import wrapper, { useAppDispatch } from '@store/.';
 import useAppSelector from '@hooks/useAppSelector';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 import { getCharacters, searchCharacter } from '@utils/redux/slices/characters';
 
@@ -40,4 +41,4 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   },
 );
 
-export default CharactersPage;
+export default withPageAuthRequired(CharactersPage);
